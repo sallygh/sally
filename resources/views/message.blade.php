@@ -17,7 +17,7 @@
         @foreach ($message as $message )
         <tr>
           <td scope="row">{{ $message->id}}</td>
-          <td><a href=""> {{ $message->name}} </td>
+          <td><a href="admin-message/{{$message->id}}"> {{ $message->name}} </td>
           <td>{{ $message->email}}</td>
           <td>{{ $message->contact}}</td>
         </tr>

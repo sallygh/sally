@@ -27,6 +27,11 @@ Route::get('/contact', function () {
 
 
 Route::post('/contact-my', function (Request $request) {
+    $request->validate([
+     'name' =>'required|min:3|max:255|string',
+     'email'=>'required|email',
+     'contact'=>'required|min:5'
+    ]);
 $message= new Messages();
 $message->name=$request->name;
 $message->email=$request->email;
