@@ -6,7 +6,7 @@
     <div class="container py-4">
 
         <!-- Bootstrap 5 starter form -->
-        <form id="contactForm" method="POST" action="contact-my">
+        <form id="contactForm" method="POST" action="contact-my" >
       @csrf
           <!-- Name input -->
           <div class="mb-3">

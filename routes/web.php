@@ -2,6 +2,7 @@
 
 use App\Models\Messages;
 use Illuminate\Http\Request;
+use Illuminate\Mail\Message;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -36,5 +37,13 @@ $message->save();
 
 Route::get('/admin-message', function () {
     $message = Messages::all();
-    return  view('admin.message', compact('message'));
+    return  view('message', compact('message'));
 });
+
+Route::get('admin-message/{id}', function ($id) {
+    $message= Messages::find($id);
+    return view('message-show' , compact('message'));
+});
+
+
+

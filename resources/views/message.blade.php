@@ -16,12 +16,10 @@
     <tbody>
         @foreach ($message as $message )
         <tr>
-          <th scope="row">1</th>
-          <td>{{ $message->id}}</td>
-          <td>{{ $message->name}}</td>
+          <td scope="row">{{ $message->id}}</td>
+          <td><a href=""> {{ $message->name}} </td>
           <td>{{ $message->email}}</td>
           <td>{{ $message->contact}}</td>
-
         </tr>
 
         @endforeach
