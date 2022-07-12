@@ -15,7 +15,7 @@ class carcontroller extends Controller
      */
     public function index()
     {
-        //
+        return view('admin.cars.index');
     }
 
     /**
@@ -36,7 +36,27 @@ class carcontroller extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+
+        $request->validate([
+        'model' => 'required',
+        'price' => 'required',
+        'year' => 'required',
+        'description' => 'required',
+
+        ]);
+
+        $car= new Car;
+        $car ->model =$request->model;
+        $car ->price =$request->price;
+        $car ->year =$request->year;
+        $car ->description =$request->description;
+        $car ->save();
+
+
+        return redirect()->route('cars.index');
+
+
     }
 
     /**

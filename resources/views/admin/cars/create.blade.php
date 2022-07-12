@@ -6,8 +6,8 @@
 <section class="section">
     <div class="container" style="margin-top: 5% ; width:50%">
 
-    <form action="" method="POST">
-
+    <form action={{ route('storeCar') }}  method="POST">
+@csrf
         <div class="form-group">
           <label for="modle">model</label>
           <input type="text" class="form-control" id="model"
@@ -22,17 +22,23 @@
             <input type="number" class="form-control" id="price" name="price"  step="1000000"  placeholder="سعر السيارة ">
           </div>
         </div>
-
+        @foreach ($errors->all() as $error)
+        <li>{{ $error }}</li>
+    @endforeach
         <div class="form-group">
             <label for="year">year</label>
-            <input type="year" class="form-control" id="model"
-            name="year" min="1900" placeholder="تاريخ التصنيع السيارة ">
+            <input type="date" class="form-control" id="year"
+            name="year"  placeholder="تاريخ التصنيع السيارة ">
           </div>
 
-        <div class="form-check">
-          <input type="checkbox" class="form-check-input" id="exampleCheck1">
-          <label class="form-check-label" for="exampleCheck1">Check me out</label>
-        </div>
+          <div class="form-group">
+            <div class="form-group-prepend">
+                <label for="price">الوصف</label>
+            </div>
+            <textarea class="form-control" name="description" > </textarea>
+          </div>
+
+
         <button type="submit" class="btn btn-primary">Submit</button>
       </form>
 </div>
