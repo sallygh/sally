@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\Admin\carcontroller;
 use App\Http\Controllers\HomePage;
 use App\Http\Controllers\MessageController;
 use App\Models\Messages;
@@ -29,5 +30,6 @@ Route::get('/admin-message',[MessageController::class,'messageall'])->name('mess
 
 Route::get('admin-message/{message:name}', [MessageController::class,'show'] )->name('message-show');
 
+Route::get('/admin/cars/create',[carcontroller::class,'create']);
 
 
