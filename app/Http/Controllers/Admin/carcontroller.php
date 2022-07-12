@@ -15,7 +15,8 @@ class carcontroller extends Controller
      */
     public function index()
     {
-        return view('admin.cars.index');
+        $cars = car::all();
+        return view('admin.cars.index' , compact('cars'));
     }
 
     /**
@@ -36,8 +37,6 @@ class carcontroller extends Controller
      */
     public function store(Request $request)
     {
-
-
         $request->validate([
         'model' => 'required',
         'price' => 'required',
@@ -53,10 +52,7 @@ class carcontroller extends Controller
         $car ->description =$request->description;
         $car ->save();
 
-
         return redirect()->route('cars.index');
-
-
     }
 
     /**
@@ -67,7 +63,9 @@ class carcontroller extends Controller
      */
     public function show(car $car)
     {
-        return view('cars-show', compact($car));
+
+
+        return view('admin.cars.show', compact($car));
     }
 
     /**

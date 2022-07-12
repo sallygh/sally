@@ -6,7 +6,7 @@
 <section class="section">
     <div class="container" style="margin-top: 5% ; width:50%">
 
-    <form action={{ route('storeCar') }}  method="POST">
+    <form action={{ route('indexcar') }}  method="POST">
 @csrf
         <div class="form-group">
           <label for="modle">model</label>

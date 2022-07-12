@@ -25,10 +25,10 @@ Route::get('/contact', function () {
 })->name('contact');
 
 Route::post('/contact-my',[MessageController::class,'store'])->name('contact-my');
-Route::get('/admin-message',[MessageController::class,'messageall'])->name('message-admin');
-Route::get('admin-message/{message:name}', [MessageController::class,'show'] )->name('message-show');
+Route::post('/admin-message',[MessageController::class,'messageall'])->name('message-admin');
+Route::get('admin-message/{message:name}', [MessageController::class,'show'])->name('message-show');
 
 Route::get('/admin/cars/create',[carcontroller::class,'create'])->name('createCar');
 Route::post('/admin/cars/store',[carcontroller::class,'store'])->name('storeCar');
-Route::get('/admin/cars/index',[carController::class,'index'])->name('indexcar');
-
+Route::post('/admin/cars/index',[carController::class,'index'])->name('indexcar');
+Route::get('/admin/cars/show',[carController::class,'show'])->name('showcar');
