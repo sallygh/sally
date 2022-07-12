@@ -1,9 +1,12 @@
 <?php
 
+use App\Http\Controllers\HomePage;
+use App\Http\Controllers\MessageController;
 use App\Models\Messages;
 use Illuminate\Http\Request;
 
 use Illuminate\Support\Facades\Route;
+use Symfony\Component\Mime\MessageConverter;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,38 +19,15 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/home', function () {
-    return view('home');
-});
-
-
+Route::get('/home', [HomePage::class ,'home'])->name('home');
 Route::get('/contact', function () {
     return view('contact');
-});
+})->name('contact');
 
+Route::post('/contact-my',[MessageController::class,'store'])->name('contact-my');
+Route::get('/admin-message',[MessageController::class,'messageall'])->name('message-admin');
 
-Route::post('/contact-my', function (Request $request) {
-    $request->validate([
-     'name' =>'required|min:3|max:255|string',
-     'email'=>'required|email',
-     'contact'=>'required|min:5'
-    ]);
-$message= new Messages();
-$message->name=$request->name;
-$message->email=$request->email;
-$message->contact=$request->contact;
-$message->save();
-
-});
-
-Route::get('/admin-message', function () {
-    $message = Messages::all();
-    return  view('message', compact('message'));
-});
-
-Route::get('admin-message/{message:name}', function ( Messages  $message) {
-    return view('message-show' , compact('message'));
-})->name('message-show');
+Route::get('admin-message/{message:name}', [MessageController::class,'show'] )->name('message-show');
 
 
 
