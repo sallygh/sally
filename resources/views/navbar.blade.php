@@ -9,7 +9,7 @@
 </head>
 <body>
     @yield('heder')
-  <nav class="navbar navbar-expand-lg bg-light"  style="width: 100% ; position: fixed; top:0;  ">
+  <nav  class="navbar fixed-top navbar-expand-lg navbar-light bg-light bg-primary ">
   <div class="container-fluid">
     <a class="navbar-brand" href="#">Navbar</a>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

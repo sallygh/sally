@@ -17,9 +17,15 @@
         @foreach ($message as $message )
         <tr>
           <td scope="row">{{ $message->id}}</td>
-          <td><a href="admin-message/{{$message->id}}"> {{ $message->name}} </td>
-          <td>{{ $message->email}}</td>
-          <td>{{ $message->contact}}</td>
+          <td>
+            <a href= {{ route('message-show' , $message )}}>
+                 {{ $message->name}} </td>
+          <td>
+            <a href= {{ route('message-show' , $message )}}>
+                {{ $message->email}}</td>
+          <td>
+            <a href= {{ route('message-show' , $message )}}>
+                {{ $message->contact}}</td>
         </tr>
 
         @endforeach
