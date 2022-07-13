@@ -32,3 +32,6 @@ Route::get('/admin/cars/create',[carcontroller::class,'create'])->name('createCa
 Route::get('/admin/cars/store',[carcontroller::class,'store'])->name('storeCar');
 Route::get('/admin/cars/index',[carController::class,'index'])->name('indexcar');
 Route::get('/admin/cars/show',[carController::class,'show'])->name('showcar');
+Route::get('/admin/cars/{car}/edit',[carController::class,'edit'])->name('editcar');
+Route::put('/admin/cars/{car}',[carController::class,'update'])->name('updatecar');
+Route::delete('/admin/cars/{car}',[carController::class,'destroy'])->name('destroy');

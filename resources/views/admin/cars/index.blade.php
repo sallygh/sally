@@ -13,7 +13,10 @@
         <th scope="col">price</th>
         <th scope="col">year</th>
         <th scope="col">description</th>
-        <th >sss</th>
+        <th >
+
+
+        </th>
       </tr>
     </thead>
     <tbody>
@@ -21,17 +24,18 @@
         <tr>
           <td scope="row">{{ $car->id}}</td>
           <td>
-            <a href= {{ route('showcar' , $car )}}>
+            <a href= {{ route('editcar' , $car )}}>
                  {{ $car->model}} </td>
           <td>
-            <a href= {{ route('showcar' , $car )}}>
+            <a href= {{ route('editcar' , $car )}}>
                 {{ $car->price}}</td>
           <td>
-            <a href= {{ route('showcar' , $car )}}>
+            <a href= {{ route('editcar' , $car )}}>
                 {{ $car->year}}</td>
                 <td>
-            <a href= {{ route('showcar' , $car )}}>
+            <a href= {{ route('editcar' , $car )}}>
                 {{ $car->description}}</td>
+                <td> <form action={{route('destroy' , $car)}} method="POST" > @csrf @method('delete')  <button type="submit" class="btn btn-outline-primary"> DElete </form> </td>
         </tr>
 
         @endforeach
