@@ -29,8 +29,8 @@
             <a href= {{ route('showcar' , $car )}}>
                 {{ $car->year}}</td>
                 <td>
-                    <a href= {{ route('showcar' , $car )}}>
-                        {{ $car->description}}</td>
+            <a href= {{ route('showcar' , $car )}}>
+                {{ $car->description}}</td>
         </tr>
 
         @endforeach
