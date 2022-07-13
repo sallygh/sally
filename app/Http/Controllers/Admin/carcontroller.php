@@ -37,22 +37,28 @@ class carcontroller extends Controller
      */
     public function store(Request $request)
     {
+
+
         $request->validate([
-            'model' => 'required|min:3|max:255|string',
-            'price' => 'required',
-            'year' => 'required',
-            'description' => 'required|string|min:5',
 
-        ]);
+            'model' =>'required|min:3|max:255|string',
+            'price'=>'required',
+            'year'=>'required',
+            'description'=>'required|min:5'
 
-        $car = new Car;
-        $car->model = $request->model;
-        $car->price = $request->price;
-        $car->year = $request->year;
-        $car->description = $request->description;
-        $car->save();
+           ]);
 
-        return redirect()->route('cars.index');
+
+
+       $car= new car();
+       $car->model=$request->model;
+       $car->price=$request->price;
+       $car->year = $request->year;
+       $car->description=$request->description;
+       $car->save();
+
+        return redirect()->route('indexcar');
+
     }
 
     /**

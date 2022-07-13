@@ -6,18 +6,28 @@
 <section class="section">
     <div class="container" style="margin-top: 5% ; width:50%">
 
-        <form action={{ route('indexcar') }} method="POST">
+        <form action={{route('storeCar')}} method="post" enctype="multipart/form-data " >
             @csrf
-
+            @method('Get')
+            @if ($errors->any())
+            <div class="alert alert-danger">
+                <ul>
+                    @foreach ($errors->all() as $error)
+                        <li>{{ $error }}</li>
+                    @endforeach
+                </ul>
+            </div>
+        @endif
 
             <div class="form-group">
                 <label for="modle">model</label>
-                <input type="text" class="form-control" id="model" name="model" placeholder="موديل السيارة ">
-              @error('model')
-                  <div class="invalid-feedback">{{ $}}</div>
-              @enderror
+                <input type="text" class="form-control"
+                @error('brand') is-invalid @enderror
+                 name="model" placeholder="موديل السيارة " value={{ old('model') }}>
 
-
+                 @error('model')
+                     <div class="invalid-feedback">{{ $message }}</div>
+                 @enderror
             </div>
 
 
@@ -25,7 +35,7 @@
                 <label for="price">price</label>
                 <div class="input-group mb-3">
                     <span class="input-group-text">SYP</span>
-                    <input type="number" class="form-control" id="price" name="price" step="1000000"
+                    <input type="number" class="form-control"  name="price" step="1000000"
                         placeholder="سعر السيارة ">
                 </div>
             </div>
@@ -34,7 +44,7 @@
 
             <div class="form-group">
                 <label for="year">year</label>
-                <input type="date" class="form-control" id="year" name="year"
+                <input type="date" class="form-control"  name="year"
                     placeholder="تاريخ التصنيع السيارة ">
             </div>
 

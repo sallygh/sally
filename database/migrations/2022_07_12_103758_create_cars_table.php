@@ -19,7 +19,7 @@ return new class extends Migration
             $table->integer('price');
             $table->date('year');
             $table->text('description');
-            $table->timestamps();
+            $table->timesstamps();
         });
     }
 

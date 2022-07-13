@@ -13,6 +13,7 @@
         <th scope="col">price</th>
         <th scope="col">year</th>
         <th scope="col">description</th>
+        <th >sss</th>
       </tr>
     </thead>
     <tbody>
