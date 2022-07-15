@@ -48,8 +48,6 @@ class carcontroller extends Controller
 
            ]);
 
-
-
        $car= new car();
        $car->model=$request->model;
        $car->price=$request->price;
