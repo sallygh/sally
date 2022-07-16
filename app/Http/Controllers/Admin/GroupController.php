@@ -2,11 +2,11 @@
 
 namespace App\Http\Controllers\Admin;
 
-use App\Models\catrgory;
+use App\Http\Controllers\Controller;
+use App\Models\group;
 use Illuminate\Http\Request;
-use Illuminate\Routing\Controller;
 
-class CatrgoryController extends Controller
+class groupcontroller extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,8 +15,8 @@ class CatrgoryController extends Controller
      */
     public function index()
     {
-        $catrgory= catrgory::all();
-        return view('admin.CatrgoryController.index', compact('catrgory'));
+        $groups = group::all();
+        return view('admin.groups.index', compact('groups'));
     }
 
     /**
@@ -26,7 +26,7 @@ class CatrgoryController extends Controller
      */
     public function create()
     {
-        return view('admin.CatrgoryController.create');
+        return view('admin.groups.create');
     }
 
     /**
@@ -36,69 +36,79 @@ class CatrgoryController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
-
     {
-        dd($request->all());
 
-     $request->validate([
 
-            'name' =>'required',
-            'one'=>'required',
-            'cabcity'=>'required',
+        $request->validate([
+
+            'name'=>'required'
+
            ]);
 
-           $catrgory = new catrgory();
-           $catrgory -> one = $request->one ;
-           $catrgory -> name = $request->name;
-           $catrgory -> cabcity = $request->cabcity;
-           $catrgory->save();
+       $group= new group();
+       $group->name=$request->name;
+       $group->save();
 
-           return view('admin.CatrgoryController.index' , compact('catrgory'));
+        return redirect()->route('group.index');
 
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\catrgory  $catrgory
+     * @param  \App\Models\group  $group
      * @return \Illuminate\Http\Response
      */
-    public function show(catrgory $catrgory)
+    public function show(group $group)
     {
-        //
+
+
+        return view('admin.groups.show', compact($group));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\catrgory  $catrgory
+     * @param  \App\Models\group  $group
      * @return \Illuminate\Http\Response
      */
-    public function edit(catrgory $catrgory)
+    public function edit(group $group)
     {
-        //
+        return view('admin.group.edit', compact('group'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\catrgory  $catrgory
+     * @param  \App\Models\group  $group
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, catrgory $catrgory)
+    public function update(Request $request, group $group)
     {
-        //
+
+        $request->validate([
+
+            'name'=>'required'
+
+           ]);
+
+
+       $group->name=$request->name;
+       $group->save();
+
+         return redirect()->route('group.index');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\catrgory  $catrgory
+     * @param  \App\Models\group  $group
      * @return \Illuminate\Http\Response
      */
-    public function destroy(catrgory $catrgory)
+    public function destroy(group $group)
     {
-        //
+        $group->delete();
+        return redirect()->route('indexgroup');
     }
 }

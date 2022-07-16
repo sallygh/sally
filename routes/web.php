@@ -1,11 +1,13 @@
 <?php
 
 use App\Http\Controllers\Admin\carcontroller;
+use App\Http\Controllers\Admin\CatController;
 use App\Http\Controllers\Admin\CatrgoryController;
+use App\Http\Controllers\Admin\GroupController;
 use App\Http\Controllers\HomePage;
 use App\Http\Controllers\MessageController;
 use Illuminate\Support\Facades\Route;
-
+use PHPUnit\TextUI\XmlConfiguration\GroupCollection;
 
 /*
 |--------------------------------------------------------------------------
@@ -39,12 +41,18 @@ Route::prefix('admin')->group(function ()  {
  Route::delete('cars/{car}',[carcontroller::class,'destroy'])->name('destroy');
  Route::get('cars/create',[carcontroller::class,'create'])->name('createCar');
 
+  Route::get('groups/index',[GroupController::class, 'index'])->name('groups.index');
+  Route::get('groups/create',[GroupController::class, 'create'])->name('groups.greate');
+  Route::get('groups/store',[GroupController::class, 'store'])->name('groups.store');
+  Route::put('groups/{group}',[GroupCollection::class,'update'])->name('groups.update');
+  Route::get('groups/{group}/edit',[Groupcontroller::class,'edit'])->name('groups.edit');
 
 
+   Route::get('cats/index',[CatController::class , 'index'])->name('cats.index');
+   Route::get('cats/create',[CatController::class , 'create'])->name('cats.create');
+   Route::get('cats/store',[CatController::class , 'store'])->name('cats.store');
+
+   
 });
 
-Route::get('/admin/CatrgoryController/store',[CatrgoryController::class,'store'])->name('CatrgoryController.store');
 
-Route::get('/admin/CatrgoryController/index',[CatrgoryController::class,'index'])->name('CatrgoryController.index');
-
-Route::get('/admin/CatrgoryController/create',[CatrgoryController::class,'create'])->name('CatrgoryController.create');
